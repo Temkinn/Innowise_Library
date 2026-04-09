@@ -1,0 +1,44 @@
+:root {
+    --text: #5e5468; 
+    --text-h: #1e1814; 
+    --bg: #f5f5f0; 
+    --border: #e2dfe8; 
+    --accent: #285541;
+    --liked: #dc5151;
+
+
+    color-scheme: light dark;
+    color: var(--text);
+    background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #d1d5db; 
+        --text-h: #f9fafb;
+        --bg: #0f1117;
+        --secondary-bg: #2b2a33;
+        --border: #272b35; 
+        --accent: #285541; 
+        --liked: #dc5151;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    color: var(--text);
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-h);
+}
+
