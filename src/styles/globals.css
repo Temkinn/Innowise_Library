@@ -42,3 +42,6 @@ h6 {
     color: var(--text-h);
 }
 
+button {
+    outline: none;
+}
