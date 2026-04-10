@@ -1,11 +1,15 @@
-import styles from "./styles.module.css";
+import "./styles.css";
+import { isInFavorites } from "@/lib";
 
 export function BookCard(book) {
   const coverUrl = book.cover_i
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}.jpg`
     : "/favicon.svg";
-  return `<div class="${styles.card}">
-    <button onclick="console.log('Add to Favorites')">
+
+  const isFavorite = isInFavorites(book);
+
+  return `<div class="card ${isFavorite ? "favorite-book" : ""}">
+    <button id="fav-btn" data-book-id="${book.key}">
       <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -23,7 +27,7 @@ export function BookCard(book) {
       </svg>
     </button>
 
-    <a href="https://openlibrary.org/${book.key}" target="_blank">
+    <a href="https://openlibrary.org${book.key}" target="_blank">
       <img src="${coverUrl}" alt="${book.title}" />
     </a>
 

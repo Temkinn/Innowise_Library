@@ -44,4 +44,5 @@ h6 {
 
 button {
     outline: none;
+    cursor: pointer;
 }

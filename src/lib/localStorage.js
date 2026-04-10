@@ -1,13 +1,42 @@
+import { localStorageKeys } from "@/constants";
+
 export function getFavorites() {
-  const raw = localStorage.getItem("favorites");
-  return raw ? JSON.parse(raw) : [];
+  const rawFavData = localStorage.getItem(localStorageKeys.favorites);
+  return rawFavData ? JSON.parse(rawFavData) : [];
+}
+
+export function isInFavorites(book) {
+  const favorites = getFavorites();
+  return favorites.some((b) => b.key === book.key);
 }
 
 export function saveFavorite(book) {
   const favorites = getFavorites();
-  const exists = favorites.some((b) => b.key === book.key);
-  if (!exists) {
+  const isExist = favorites.some((b) => b.key === book.key);
+  if (!isExist) {
     favorites.push(book);
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem(localStorageKeys.favorites, JSON.stringify(favorites));
   }
+}
+
+export function removeFavorite(book) {
+  const favorites = getFavorites();
+  const index = favorites.findIndex((b) => b.key === book.key);
+  if (index !== -1) {
+    favorites.splice(index, 1);
+    localStorage.setItem(localStorageKeys.favorites, JSON.stringify(favorites));
+  }
+}
+
+export function toggleFavorite(book) {
+  const isExist = isInFavorites(book);
+  if (isExist) {
+    removeFavorite(book);
+  } else {
+    saveFavorite(book);
+  }
+}
+
+export function clearFavorites() {
+  localStorage.removeItem(localStorageKeys.favorites);
 }
