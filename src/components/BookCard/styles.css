@@ -1,4 +1,4 @@
-.card {
+.book-card {
     position: relative;
     border-radius: 10px;
     padding-bottom: 5px;
@@ -11,7 +11,7 @@
     background-color: var(--secondary-bg);
 }
 
-.card > button {
+.book-card > button {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -27,24 +27,24 @@
     border: none;
 }
 
-.card.favorite-book > button svg {
+.book-card.favorite-book > button svg {
     fill: var(--liked);
     stroke: var(--liked);
 }
 
-.card img {
+.book-card img {
     width: 100%;
     aspect-ratio: 1/1.414;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-.card h3 {
+.book-card h3 {
     font-size: 1rem;
     padding-inline: 5%;
 }
 
-.card p {
+.book-card p {
     font-size: 0.75rem;
     padding-inline: 5%;
 }

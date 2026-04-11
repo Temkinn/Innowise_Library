@@ -1,15 +1,11 @@
 import "./styles/globals.css";
 import "./styles/styles.css";
 
-import {
-  searchBookAction,
-  getFavorites,
-  saveFavorite,
-  removeFavorite,
-} from "@/lib";
+import { searchBookAction, getFavorites } from "@/lib";
+
+import { renderFavorites } from "@/components/render/favorite";
 
 const SearchForm = document.getElementById("search-form");
-const bookList = document.getElementById("book-list");
 const favorites = document.getElementById("favorites");
 const favoritesCount = document.getElementById("favorites-count");
 
@@ -20,3 +16,4 @@ SearchForm.addEventListener("submit", searchBookAction);
 const favoritesAmount = getFavorites().length;
 favoritesCount.textContent = favoritesAmount;
 
+renderFavorites();

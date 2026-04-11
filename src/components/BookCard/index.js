@@ -8,8 +8,8 @@ export function BookCard(book) {
 
   const isFavorite = isInFavorites(book);
 
-  return `<div class="card ${isFavorite ? "favorite-book" : ""}">
-    <button id="fav-btn" data-book-id="${book.key}">
+  return `<div data-book-id="${book.key}" class="book-card ${isFavorite ? "favorite-book" : ""}">
+    <button id="book-card-like-button" data-book-id="${book.key}">
       <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
