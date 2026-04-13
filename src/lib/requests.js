@@ -1,6 +1,6 @@
 import { API_URL } from "@/constants";
 
-export async function searchBook(rawQuery) {
+export async function searchBooks(rawQuery) {
   try {
     const params = new URLSearchParams({
       q: rawQuery,

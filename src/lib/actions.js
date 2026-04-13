@@ -1,4 +1,4 @@
-import { searchBook } from "./requests";
+import { searchBooks } from "./requests";
 import { renderBooks } from "@/components/render/books";
 
 export const searchBookAction = async (e) => {
@@ -13,7 +13,11 @@ export const searchBookAction = async (e) => {
   bookList.innerHTML = `<p class="loading">Loading...</p>`;
 
   try {
-    const data = await searchBook(query);
+    const data = await searchBooks(query);
+    if (!data.docs.length) {
+      bookList.innerHTML = "<p>No books found.</p>";
+      return;
+    }
     // Display first 6 results
     const books = data.docs.slice(0, 12);
 
@@ -23,3 +27,23 @@ export const searchBookAction = async (e) => {
     console.error(error);
   }
 };
+
+export async function searchBooksByQueryAction(query) {
+  const bookList = document.getElementById("book-list");
+  bookList.innerHTML = `<p class="loading">Loading...</p>`;
+
+  try {
+    const data = await searchBooks(query);
+    if (!data.docs.length) {
+      bookList.innerHTML = "<p>No books found.</p>";
+      return;
+    }
+    // Display first 6 results
+    const books = data.docs.slice(0, 12);
+
+    renderBooks(books);
+  } catch (error) {
+    bookList.innerHTML = "<p>Error fetching books. Try again.</p>";
+    console.error(error);
+  }
+}

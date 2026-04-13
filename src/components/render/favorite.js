@@ -1,6 +1,5 @@
 import { FavoriteCard } from "@/components";
-import { getFavorites, toggleFavorite } from "@/lib";
-import { booksMap } from "@/constants";
+import { getFavorites, removeFavorite } from "@/lib";
 
 export function renderFavorites() {
   const container = document.getElementById("favorites");
@@ -27,14 +26,11 @@ const handleLike = (e) => {
   if (e.target.closest("#favorite-card-like-button")) {
     const button = e.target.closest("#favorite-card-like-button");
     const bookId = button.dataset.bookId;
-    
-    const card = document.querySelector(`.book-card[data-book-id="${bookId}"]`);
 
-    const book = booksMap.get(bookId);
-
-    toggleFavorite(book);
+    removeFavorite(bookId);
     renderFavorites();
 
-    if(card) card.classList.toggle("favorite-book");
+    const card = document.querySelector(`.book-card[data-book-id="${bookId}"]`);
+    if (card) card.classList.toggle("favorite-book");
   }
 };

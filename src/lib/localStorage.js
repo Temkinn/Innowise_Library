@@ -5,9 +5,9 @@ export function getFavorites() {
   return rawFavData ? JSON.parse(rawFavData) : [];
 }
 
-export function isInFavorites(book) {
+export function isInFavorites(key) {
   const favorites = getFavorites();
-  return favorites.some((b) => b.key === book.key);
+  return favorites.some((b) => b.key === key);
 }
 
 export function saveFavorite(book) {
@@ -19,9 +19,9 @@ export function saveFavorite(book) {
   }
 }
 
-export function removeFavorite(book) {
+export function removeFavorite(key) {
   const favorites = getFavorites();
-  const index = favorites.findIndex((b) => b.key === book.key);
+  const index = favorites.findIndex((b) => b.key === key);
   if (index !== -1) {
     favorites.splice(index, 1);
     localStorage.setItem(localStorageKeys.favorites, JSON.stringify(favorites));
@@ -29,9 +29,9 @@ export function removeFavorite(book) {
 }
 
 export function toggleFavorite(book) {
-  const isExist = isInFavorites(book);
+  const isExist = isInFavorites(book.key);
   if (isExist) {
-    removeFavorite(book);
+    removeFavorite(book.key);
   } else {
     saveFavorite(book);
   }

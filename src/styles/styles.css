@@ -4,13 +4,13 @@ header {
     z-index: 10;
     width: 100%;
     height: 10vh;
-    padding-left: 10%;
+    padding-inline: 10%;
 
     display: flex;
     align-items: center;
     gap: 10px;
 
-    background-color: var(--bg);
+    background-color: var(--background);
     border-bottom: 1px var(--border) solid;
 }
 
@@ -21,12 +21,20 @@ header svg {
 
     border-radius: 10px;
     background-color: var(--accent);
+    color: var(--icons);
+}
+
+header > button {
+    margin-left: auto;
+
+    background-color: transparent;
+    border: none;
 }
 
 /* Main Page Styles */
 main {
     /* Padding for header */
-    padding-block: 10vh;
+    padding-top: 10vh;
     z-index: 10;
 
     width: 100%;
@@ -46,7 +54,7 @@ h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: -2rem;
-    
+
     text-align: center;
 }
 
@@ -58,11 +66,11 @@ main > h2 {
     font-weight: 400;
 
     text-align: center;
-    color: var(--text);
 }
 
 /* Search Bar */
 .search-form {
+    position: relative;
     width: 45%;
     min-width: fit-content;
     max-width: 700px;
@@ -72,12 +80,21 @@ main > h2 {
     gap: 10px;
 }
 
+.search-form > svg {
+    position: absolute;
+    left: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .search-form input {
     flex: 1;
     padding: 10px;
+    padding-left: 40px;
     font-size: 16px;
 
     border-radius: 10px;
+    background-color: var(--card);
     border: 2px var(--border) solid;
 }
 
@@ -86,17 +103,16 @@ main > h2 {
     font-size: 16px;
 
     background-color: var(--accent);
+    color: var#F8F6F1;
 
     border-radius: 10px;
     border: 2px transparent solid;
 
-    transition:
-        border 0.25s ease-in-out,
-        color 0.25s ease-in-out;
+    transition: opacity 0.25s ease-in-out;
 }
 
 .search-form button:hover {
-    border-color: var(--text);
+    opacity: 0.95;
 }
 
 /* Section */
@@ -131,6 +147,9 @@ section {
     flex-direction: column;
 
     border-radius: 10px;
+    border: var(--border) 2px solid;
+    color: var(--card);
+    box-shadow: var(--shadow) 0px 0px 3px;
 }
 
 .favorites > .info {
@@ -158,6 +177,7 @@ section {
 
     border-radius: 10px;
     background-color: var(--accent);
+    color: var(--icons);
 }
 
 .info .text > h2 {
@@ -217,6 +237,7 @@ footer {
     border-top: 1px var(--border) solid;
 }
 
+/* Media queries */
 @media screen and (width <= 1024px) {
     .book-list {
         grid-template-columns: repeat(2, 1fr);
@@ -229,7 +250,7 @@ footer {
         flex-direction: row;
     }
     .favorites > .info {
-        /*border-bottom: none;*/
+        border-bottom: none;
         border-right: 2px var(--border) solid;
     }
 }

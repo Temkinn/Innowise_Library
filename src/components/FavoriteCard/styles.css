@@ -1,12 +1,17 @@
 .favorite-card {
     position: relative;
-    
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     padding: 10px;
+    margin-inline: 10px;
     border-bottom: 2px var(--border) solid;
+}
+
+.favorite-card:last-child {
+    border-bottom: none;
 }
 
 .favorite-card img {

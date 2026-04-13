@@ -2,11 +2,7 @@ import "./styles.css";
 import { isInFavorites } from "@/lib";
 
 export function FavoriteCard(favorite) {
-  const coverUrl = favorite.cover_i
-    ? `https://covers.openlibrary.org/b/id/${favorite.cover_i}.jpg`
-    : "/favicon.svg";
-
-  const isFavorite = isInFavorites(favorite);
+  const isFavorite = isInFavorites(favorite.key);
   if (!isFavorite) return null;
 
   return `<div class="favorite-card">
