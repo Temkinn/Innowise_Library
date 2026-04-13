@@ -10,12 +10,12 @@ export const searchBookAction = async (e) => {
   const query = formData.get("search-query")?.trim();
   if (!query) return;
 
-  bookList.innerHTML = `<div class="loading">Loading...</div>`;
+  bookList.innerHTML = `<p class="loading">Loading...</p>`;
 
   try {
     const data = await searchBook(query);
     // Display first 6 results
-    const books = data.docs.slice(0, 6);
+    const books = data.docs.slice(0, 12);
 
     renderBooks(books);
   } catch (error) {
@@ -23,4 +23,3 @@ export const searchBookAction = async (e) => {
     console.error(error);
   }
 };
-

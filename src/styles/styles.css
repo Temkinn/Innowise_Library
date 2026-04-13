@@ -38,12 +38,16 @@ main {
     gap: 5vh;
 }
 
-main h1 {
+/* Doesn't need extra identifires cause h1 must be one on the page */
+h1 {
+    width: 80%;
     padding-top: 1rem;
 
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: -2rem;
+    
+    text-align: center;
 }
 
 main > h2 {
@@ -60,6 +64,8 @@ main > h2 {
 /* Search Bar */
 .search-form {
     width: 45%;
+    min-width: fit-content;
+    max-width: 700px;
     height: 6vh;
 
     display: flex;
@@ -105,10 +111,17 @@ section {
 
 .book-list {
     flex: 1;
+    position: relative;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+}
+
+.book-list > p {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .favorites {
@@ -117,7 +130,6 @@ section {
     display: flex;
     flex-direction: column;
 
-    
     border-radius: 10px;
 }
 
@@ -128,6 +140,15 @@ section {
     gap: 10px;
 
     border-bottom: 2px var(--border) solid;
+}
+
+#favorites {
+    flex: 1;
+}
+
+#favorites > p {
+    text-align: center;
+    padding: 10px;
 }
 
 .info > svg {
@@ -156,7 +177,7 @@ section {
     display: flex;
     align-items: center;
     gap: 10px;
-    
+
     border-bottom: 2px var(--border) solid;
 }
 
@@ -194,4 +215,54 @@ footer {
     align-items: center;
     justify-content: center;
     border-top: 1px var(--border) solid;
+}
+
+@media screen and (width <= 1024px) {
+    .book-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    section {
+        flex-direction: column-reverse;
+    }
+    .favorites {
+        width: 100%;
+        flex-direction: row;
+    }
+    .favorites > .info {
+        /*border-bottom: none;*/
+        border-right: 2px var(--border) solid;
+    }
+}
+
+@media screen and (width <= 768px) {
+    main > h2 {
+        width: 70%;
+    }
+    .search-form {
+        width: 70%;
+    }
+}
+
+@media screen and (width <= 500px) {
+    h1 {
+        font-size: 2rem;
+    }
+    main > h2 {
+        font-size: 0.75rem;
+    }
+    .search-form {
+        min-width: none;
+    }
+    .book-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .favorites {
+        width: 100%;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+    .favorites > .info {
+        border-right: none;
+        border-bottom: 2px var(--border) solid;
+    }
 }

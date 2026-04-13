@@ -1,0 +1,59 @@
+.favorite-card {
+    position: relative;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px;
+    border-bottom: 2px var(--border) solid;
+}
+
+.favorite-card img {
+    height: 100%;
+    aspect-ratio: 1/1.414;
+}
+
+.favorite-card > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.favorite-card > button svg {
+    height: 28px;
+    aspect-ratio: 1;
+
+    fill: var(--liked);
+    stroke: var(--liked);
+}
+
+.favorite-card > button:hover {
+    scale: 1.25;
+}
+
+.favorite-card > button:active {
+    translate: 0 5px;
+}
+
+.favorite-card img {
+    height: 100%;
+    aspect-ratio: 1/1.414;
+}
+
+.favorite-card h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.favorite-card a {
+    text-decoration: none;
+}
+
+.favorite-card p {
+    font-size: 0.75rem;
+}

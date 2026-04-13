@@ -9,10 +9,9 @@ export function FavoriteCard(favorite) {
   const isFavorite = isInFavorites(favorite);
   if (!isFavorite) return null;
 
-  // <img src="${coverUrl}" alt="${favorite.title}" />
   return `<div class="favorite-card">
-      <div class="data">
-          <h4>${favorite.title}</h4>
+      <div>
+          <a href="https://openlibrary.org${favorite.key}"><h4>${favorite.title}</h4></a>
           <p>${favorite.author_name?.[0] || "Unknown author"}</p>
           <p>${favorite.first_publish_year || "No date available"}</p>
       </div>
@@ -20,7 +19,6 @@ export function FavoriteCard(favorite) {
           <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              height="24"
               fill="none"
               stroke="currentColor"
               stroke-width="1.5"
