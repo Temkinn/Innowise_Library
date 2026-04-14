@@ -19,3 +19,6 @@
 - `src/constants/` — constants.
 - `public/` — static files copied to the build root without processing.
 - `dist/` — production build output.
+
+## Deployment
+Live demo: https://your-hosting-link
